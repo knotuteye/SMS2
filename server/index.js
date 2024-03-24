@@ -2,11 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {
     createRegistration,
-    getAllRegistrations,
+    getAllRegistration,
     getRegistrationById,
     updateRegistration,
     deleteRegistration
-} = require('./db');
+} = require('./db/registration');
 
 const app = express();
 
@@ -26,19 +26,19 @@ app.post('/register', (req, res) => {
     });
 });
 
-// Handle GET request to '/registrations'
-app.get('/registrations', (req, res) => {
-    getAllRegistrations((err, registrations) => {
+// Handle GET request to '/registration'
+app.get('/registration', (req, res) => {
+    getAllRegistration((err, registration) => {
         if (err) {
             res.status(500).json({ error: 'Internal Server Error' });
             return;
         }
-        res.status(200).json(registrations);
+        res.status(200).json(registration);
     });
 });
 
-// Handle GET request to '/registrations/:id'
-app.get('/registrations/:id', (req, res) => {
+// Handle GET request to '/registration/:id'
+app.get('/registration/:id', (req, res) => {
     const id = req.params.id;
     getRegistrationById(id, (err, registration) => {
         if (err) {
@@ -53,8 +53,8 @@ app.get('/registrations/:id', (req, res) => {
     });
 });
 
-// Handle PUT request to '/registrations/:id'
-app.put('/registrations/:id', (req, res) => {
+// Handle PUT request to '/registration/:id'
+app.put('/registration/:id', (req, res) => {
     const id = req.params.id;
     const { firstName, lastName, phoneNumber, email } = req.body;
     updateRegistration(id, firstName, lastName, phoneNumber, email, (err, affectedRows) => {
@@ -70,8 +70,8 @@ app.put('/registrations/:id', (req, res) => {
     });
 });
 
-// Handle DELETE request to '/registrations/:id'
-app.delete('/registrations/:id', (req, res) => {
+// Handle DELETE request to '/registration/:id'
+app.delete('/registration/:id', (req, res) => {
     const id = req.params.id;
     deleteRegistration(id, (err, affectedRows) => {
         if (err) {
