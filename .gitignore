@@ -1,0 +1,28 @@
+# Node.js and npm
+node_modules/
+
+# Build output
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Mac OS
+.DS_Store
+
+# Compiled binary files
+*.exe
+*.out
+*.dll
+
+# Dependency lock files
+package-lock.json
+yarn.lock
