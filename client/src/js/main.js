@@ -8,10 +8,7 @@ fetch('https://restcountries.com/v3.1/all')
         const countrySelect = document.getElementById('countrySelect');
         const flagImg = document.getElementById('flag');
 
-        // Sort countries alphabetically by name
         data.sort((a, b) => a.name.common.localeCompare(b.name.common));
-
-        countries = data;
 
         data.forEach(country => {
             const option = document.createElement('option');
@@ -20,21 +17,54 @@ fetch('https://restcountries.com/v3.1/all')
             countrySelect.appendChild(option);
         });
 
-        // Add event listener to country select dropdown
         countrySelect.addEventListener('change', function () {
-            // Get the selected option
             const selectedOption = countrySelect.options[countrySelect.selectedIndex];
-
-            console.log(selectedOption);
-            // Get the value of the selected option
             const countryCode = selectedOption.value;
-            // Set the flag image source based on the selected country code
             flagImg.src = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.png`;
-            // Set the alt attribute of the flag image to the name of the selected country
             flagImg.alt = selectedOption.textContent;
         });
     })
     .catch(error => console.error('Error fetching countries data:', error));
+
+const phoneInput = document.querySelector('input[name="phoneNumber"]');
+
+// Add event listener to phone number input
+phoneInput.addEventListener('input', function (event) {
+    const inputValue = event.target.value;
+    // Remove any characters that are not numbers, plus symbol (+), or brackets
+    const filteredValue = inputValue.replace(/[^0-9+()]/g, '');
+    // Update the input field value with the filtered value
+    event.target.value = filteredValue;
+});
+
+const registrationForm = document.getElementById('registrationForm');
+const firstNameInput = document.querySelector('input[name="firstName"]');
+const lastNameInput = document.querySelector('input[name="lastName"]');
+const phoneNumberInput = document.querySelector('input[name="phoneNumber"]');
+const emailInput = document.querySelector('input[name="email"]');
+const registerButton = document.querySelector('input[type="submit"]');
+
+// Function to check if all required fields are filled
+function areAllFieldsFilled() {
+    return firstNameInput.value.trim() !== '' &&
+        lastNameInput.value.trim() !== '' &&
+        phoneNumberInput.value.trim() !== '' &&
+        emailInput.value.trim() !== '';
+}
+
+// Function to enable or disable the register button based on whether all fields are filled
+function updateRegisterButtonState() {
+    registerButton.disabled = !areAllFieldsFilled();
+}
+
+// Add event listener to each input field to reevaluate the register button's state after every input
+[firstNameInput, lastNameInput, phoneNumberInput, emailInput].forEach(function (input) {
+    input.addEventListener('input', updateRegisterButtonState);
+});
+
+// Disable the register button initially
+updateRegisterButtonState();
+
 
 
 function submitForm() {
@@ -79,6 +109,8 @@ function submitForm() {
 
     // Convert JSON data to a string
     const jsonDataString = JSON.stringify(jsonData);
+
+    console.log("jsonData", jsonData);
 
     // Send the request with the form data
     xhr.send(jsonDataString);

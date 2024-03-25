@@ -19,3 +19,8 @@ CREATE INDEX idx_email ON registration (email);
 -- Add a 'created' column to the 'registrations' table
 ALTER TABLE registration
 ADD created TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+-- Add country col
+-- Add a 'created' column to the 'registrations' table
+ALTER TABLE registration
+ADD country VARCHAR(50) NOT NULL;

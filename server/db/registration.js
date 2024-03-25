@@ -1,9 +1,9 @@
 const connection = require('./dbConnection');
 
 // Function to insert a new registration into the database
-const createRegistration = (firstName, lastName, phoneNumber, email, callback) => {
-    const sql = 'INSERT INTO registration (first_name, last_name, phone_number, email) VALUES (?, ?, ?, ?)';
-    connection.query(sql, [firstName, lastName, phoneNumber, email], (err, result) => {
+const createRegistration = (firstName, lastName, phoneNumber, email, country, callback) => {
+    const sql = 'INSERT INTO registration (first_name, last_name, phone_number, email, country) VALUES (?, ?, ?, ?, ?)';
+    connection.query(sql, [firstName, lastName, phoneNumber, email, country], (err, result) => {
         if (err) {
             console.error('Error creating registration:', err);
             callback(err, null);

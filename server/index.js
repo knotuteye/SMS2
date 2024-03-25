@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 
 // Handle POST request to '/register'
 app.post('/registration', (req, res) => {
-    const { firstName, lastName, phoneNumber, email } = req.body;
-    createRegistration(firstName, lastName, phoneNumber, email, (err, newRegistrationId) => {
+    const { firstName, lastName, phoneNumber, email, country } = req.body;
+    createRegistration(firstName, lastName, phoneNumber, email, country, (err, newRegistrationId) => {
         if (err) {
             res.status(500).json({ error: 'Internal Server Error' });
             return;
