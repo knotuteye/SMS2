@@ -1,14 +1,37 @@
 const API_Endpoint = 'http://52.0.92.65:3000/'; // Replace 'your-server-url' with the actual server URL
 
+let countries = []
+
 fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
         const countrySelect = document.getElementById('countrySelect');
+        const flagImg = document.getElementById('flag');
+
+        // Sort countries alphabetically by name
+        data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+        countries = data;
+
         data.forEach(country => {
             const option = document.createElement('option');
-            option.value = country.alpha3Code;
-            option.textContent = `${country.flags.svg} ${country.name.common}`;
+            option.value = country.cca2.toLowerCase();
+            option.textContent = `${country.name.common}`;
             countrySelect.appendChild(option);
+        });
+
+        // Add event listener to country select dropdown
+        countrySelect.addEventListener('change', function () {
+            // Get the selected option
+            const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+
+            console.log(selectedOption);
+            // Get the value of the selected option
+            const countryCode = selectedOption.value;
+            // Set the flag image source based on the selected country code
+            flagImg.src = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.png`;
+            // Set the alt attribute of the flag image to the name of the selected country
+            flagImg.alt = selectedOption.textContent;
         });
     })
     .catch(error => console.error('Error fetching countries data:', error));

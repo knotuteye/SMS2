@@ -45,6 +45,24 @@ select {
     margin-bottom: 10px;
 }
 
+#countrySelectBox {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+#countrySelect {
+    width: 100%;
+    margin: 0;
+}
+
+#flag {
+    width: 60px;
+    height: max-content;
+    margin-right: 12px;
+    border-radius: 6px;
+}
+
 form>div>input::-ms-input-placeholder,
 select::-ms-input-placeholder {
     /* Edge 12-18 */
@@ -92,21 +110,23 @@ footer>p {
     margin: 0;
 }
 
-input[type="button"].success{
+input[type="button"].success {
     background-color: #399c39;
 }
 
-.button{
+.button {
     transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: #4a90e2; /* Lighter background color */
+    background-color: #4a90e2;
+    /* Lighter background color */
 }
 
 .button:active {
-    transform: scale(0.99); /* Scale down the button slightly */
+    transform: scale(0.99);
+    /* Scale down the button slightly */
 }
 
 @media only screen and (min-width: 660px) and (max-width: 1023px) {
