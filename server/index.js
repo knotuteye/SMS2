@@ -1,4 +1,7 @@
 const express = require('express');
+const cors = require('cors');
+
+
 const bodyParser = require('body-parser');
 const {
     createRegistration,
@@ -9,6 +12,9 @@ const {
 } = require('./db/registration');
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Parse incoming request bodies in a middleware before your handlers.
 app.use(bodyParser.urlencoded({ extended: true }));
