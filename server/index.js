@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Handle POST request to '/register'
-app.post('/register', (req, res) => {
+app.post('/registration', (req, res) => {
     const { firstName, lastName, phoneNumber, email } = req.body;
     createRegistration(firstName, lastName, phoneNumber, email, (err, newRegistrationId) => {
         if (err) {
