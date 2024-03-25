@@ -4,42 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Special Miracle Service</title>
 </head>
 
 <body>
-    <div>
-        <h1>Special Miracle Service</h1>
-        <h2>Registration</h2>
-    </div>
     <main>
-        <form id="registrationForm" action="#" method="post" onsubmit="submitForm()">
+        <img class="logo" src="../img/SMS2024.jpg" alt="">
+        <article>
             <div>
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName">
+                <h2>Registration</h2>
             </div>
-            <div>
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName">
-            </div>
-            <div>
-                <label for="phoneNumber">Phone Number</label>
-                <input type="tel" name="phoneNumber">
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email">
-            </div>
-            <div>
-                <input type="submit" value="Register">
-            </div>
-            <div>
-                <input type="button" value="Bulk Registration">
-            </div>
-        </form>
+            <section>
+                <form id="registrationForm" action="#" method="post" onsubmit="submitForm()">
+                    <div>
+                        <input type="text" placeholder="First Name" name="firstName">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Last Name" name="lastName">
+                    </div>
+                    <select name="country" id="countrySelect">
+                        <option value="">Select Country</option>
+                    </select>
+                    <div>
+                        <input type="tel" placeholder="Phone Number" name="phoneNumber">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email" name="email">
+                    </div>
+                    <div>
+                        <input type="submit" class="button" value="Register">
+                    </div>
+                    <div>
+                        <input type="button" class="button" value="Download Template">
+                    </div>
+                    <div>
+                        <input type="button" class="button success" value="Upload Bulk">
+                    </div>
+                </form>
+            </section>
+        </article>
+        <footer>
+            <img src="https://christembassyaccraghana.org/images/2024/01/09/ce-accra-logo.png" alt="" srcset="">
+            <p>⚙️ 2024 - Auxano Technologies</p>
+        </footer>
     </main>
-    <script src="../js/main.js"></script>
+</body>
+
+<script src="../js/main.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,18 @@
 const API_Endpoint = 'http://52.0.92.65:3000/'; // Replace 'your-server-url' with the actual server URL
 
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        const countrySelect = document.getElementById('countrySelect');
+        data.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.alpha3Code;
+            option.textContent = `${country.flags.svg} ${country.name.common}`;
+            countrySelect.appendChild(option);
+        });
+    })
+    .catch(error => console.error('Error fetching countries data:', error));
+
 
 function submitForm() {
     // Prevent the default form submission behavior

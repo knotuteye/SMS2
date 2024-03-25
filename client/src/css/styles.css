@@ -1,0 +1,177 @@
+main {
+    display: grid;
+    justify-content: center;
+    font-family: 'Montserrat';
+}
+
+article {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+
+
+img.logo {
+    width: 100%;
+    object-fit: contain;
+    /* you need to match the shadow color to your background or image border for the desired effect*/
+    box-shadow: 0 0 8px 8px white inset;
+}
+
+form>div {
+    display: grid;
+    margin-bottom: 1rem;
+}
+
+form>div>input,
+select {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 6px;
+    font-size: 18px;
+    background-color: #eee;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+form>div>input::-ms-input-placeholder,
+select::-ms-input-placeholder {
+    /* Edge 12-18 */
+    font-size: 16px;
+}
+
+form>div>input::placeholder,
+select::placeholder {
+    font-size: 16px;
+}
+
+form>div>input[type="submit"] {
+    background-color: #b3091b;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+form>div>input[type="button"] {
+    background-color: #252930;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #252930;
+    box-sizing: border-box;
+    display: grid;
+    justify-items: center;
+    padding: 2.5rem 2rem;
+}
+
+footer>img {
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+footer>p {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+input[type="button"].success{
+    background-color: #399c39;
+}
+
+.button{
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #4a90e2; /* Lighter background color */
+}
+
+.button:active {
+    transform: scale(0.99); /* Scale down the button slightly */
+}
+
+@media only screen and (min-width: 660px) and (max-width: 1023px) {
+
+    /* Styles for tablets */
+    /* Add your CSS rules here */
+    article {
+        padding: 2rem 12rem;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+    }
+
+    footer>img {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+    /* IPADS */
+    article {
+        padding: 2rem 12rem;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+    }
+
+    footer>img {
+        margin: 0;
+    }
+}
+
+
+@media only screen and (min-width: 1025px) {
+
+    /* CSS rules for screens larger than 1024px */
+    /* Add your styles here */
+    main {
+        display: grid;
+        grid-template-columns: 55% 45%;
+        height: 100vh;
+    }
+
+    article {
+        padding: 5rem 7rem;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+        grid-column: span 2;
+    }
+
+    footer>img {
+        margin: 0;
+    }
+}
