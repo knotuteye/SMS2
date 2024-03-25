@@ -9,9 +9,6 @@ console.log({
     database: process.env.DB_NAME
 });
 
-console.log(process);
-console.log(process.env);
-
 // MySQL database connection configuration
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
