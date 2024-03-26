@@ -65,6 +65,42 @@ function updateRegisterButtonState() {
 // Disable the register button initially
 updateRegisterButtonState();
 
+// Find the "Download Template" button
+const downloadTemplateButton = document.querySelector('.button[value="Download Template"]');
+
+// Add event listener to the "Download Template" button
+downloadTemplateButton.addEventListener('click', () => {
+    // Make a GET request to the server route for downloading the file
+    fetch('/registration/bulk')
+        .then(response => {
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error('Failed to download template');
+            }
+            // Initiate the download by creating a blob from the response and triggering a download
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a URL for the blob
+            const url = window.URL.createObjectURL(blob);
+            // Create an anchor element to trigger the download
+            const a = document.createElement('a');
+            // Set the href attribute to the blob URL
+            a.href = url;
+            // Set the download attribute to specify the filename
+            a.download = 'template.xlsx'; // Change the filename as per your requirement
+            // Append the anchor element to the document body
+            document.body.appendChild(a);
+            // Trigger the click event on the anchor element
+            a.click();
+            // Revoke the URL to release resources
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error downloading template:', error);
+            // Handle errors here, such as displaying an error message to the user
+        });
+});
 
 
 function submitForm() {
