@@ -1,11 +1,12 @@
 const AWS = require('aws-sdk');
 const fs = require('fs');
+require('dotenv').config();
 
 // Initialize AWS SDK
 const s3 = new AWS.S3({
-  region: 'your-region', // Replace 'your-region' with the appropriate AWS region
-  accessKeyId: 'your-access-key-id', // Replace 'your-access-key-id' with your AWS access key ID
-  secretAccessKey: 'your-secret-access-key' // Replace 'your-secret-access-key' with your AWS secret access key
+  region: process.env.AWS_REGION, // Replace 'your-region' with the appropriate AWS region
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Replace 'your-access-key-id' with your AWS access key ID
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY // Replace 'your-secret-access-key' with your AWS secret access key
 });
 
 // Function to download a file from S3
