@@ -62,7 +62,7 @@ app.get('/registration/:id', (req, res) => {
 // Handle PUT request to '/registration/:id'
 app.put('/registration/:id', (req, res) => {
     const id = req.params.id;
-    const { firstName, lastName, phoneNumber, email } = req.body;
+    const { firstName, lastName, phoneNumber, email, country } = req.body;
     updateRegistration(id, firstName, lastName, phoneNumber, email, (err, affectedRows) => {
         if (err) {
             res.status(500).json({ error: 'Internal Server Error' });

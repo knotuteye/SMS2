@@ -43,7 +43,7 @@ const getRegistrationById = (id, callback) => {
 };
 
 // Function to update a registration in the database
-const updateRegistration = (id, firstName, lastName, phoneNumber, email, callback) => {
+const updateRegistration = (id, firstName, lastName, phoneNumber, email, country, callback) => {
     const sql = 'UPDATE registration SET first_name = ?, last_name = ?, phone_number = ?, email = ? WHERE id = ?';
     connection.query(sql, [firstName, lastName, phoneNumber, email, id], (err, result) => {
         if (err) {
