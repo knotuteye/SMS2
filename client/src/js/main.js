@@ -89,7 +89,7 @@ downloadTemplateButton.addEventListener('click', () => {
             // Set the href attribute to the blob URL
             a.href = url;
             // Set the download attribute to specify the filename
-            a.download = 'template.xlsx'; // Change the filename as per your requirement
+            a.download = '__Fellowship__Cell__SMS 2.0 Bulk Template.xlsx'; // Change the filename as per your requirement
             // Append the anchor element to the document body
             document.body.appendChild(a);
             // Trigger the click event on the anchor element
@@ -152,3 +152,54 @@ function submitForm() {
     // Send the request with the form data
     xhr.send(jsonDataString);
 }
+
+
+// Function to handle file upload
+function handleFileUpload(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch(API_Endpoint + 'registration/bulk', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('File uploaded successfully');
+            // Handle success
+        } else {
+            console.error('Error uploading file');
+            // Handle error
+        }
+    })
+    .catch(error => {
+        console.error('Error uploading file:', error);
+        // Handle error
+    });
+}
+
+// Find the "Upload Bulk" button
+const uploadBulkButton = document.querySelector('.button[value="Upload Bulk"]');
+
+// Find the file input
+const fileInput = document.createElement('input');
+fileInput.type = 'file';
+fileInput.accept = '.xlsx';
+fileInput.style.display = 'none'; // Hide the file input
+
+// Append the file input to the document body
+document.body.appendChild(fileInput);
+
+// Add event listener to the "Upload Bulk" button
+uploadBulkButton.addEventListener('click', () => {
+    // Trigger a click event on the file input
+    fileInput.click();
+});
+
+// Add event listener to the file input
+fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+        handleFileUpload(file);
+    }
+});

@@ -35,4 +35,25 @@ const downloadFileFromS3 = (bucketName, key, destinationFilePath, callback) => {
     });
 };
 
-module.exports = { downloadFileFromS3 };
+// Function to upload a file to S3
+const uploadFileToS3 = (bucketName, key, buffer, callback) => {
+  // Create parameters for S3 putObject operation
+  const params = {
+    Bucket: bucketName,
+    Key: key,
+    Body: buffer
+  };
+
+  // Upload the file to S3
+  s3.putObject(params, (err, data) => {
+    if (err) {
+      console.error('Error uploading file to S3:', err);
+      callback(err);
+      return;
+    }
+    console.log('File uploaded successfully');
+    callback(null);
+  });
+};
+
+module.exports = { downloadFileFromS3, uploadFileToS3 };
