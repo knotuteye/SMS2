@@ -86,7 +86,7 @@ app.delete('/registration/:id', (req, res) => {
 });
 
 // Handle GET request to '/registration/bulk'
-app.get('/registration/bulk', (req, res) => {
+app.get('/bulk/registration', (req, res) => {
     const fileName = '<Fellowship> <Cell> SMS2.0 Attendance Template.xlsx';
     const bucketName = 'bulk-attendance'; // Replace with your S3 bucket name
     const key = fileName;

@@ -71,7 +71,8 @@ const downloadTemplateButton = document.querySelector('.button[value="Download T
 // Add event listener to the "Download Template" button
 downloadTemplateButton.addEventListener('click', () => {
     // Make a GET request to the server route for downloading the file
-    fetch('/registration/bulk')
+    let url = API_Endpoint + 'bulk/registration/';
+    fetch(url)
         .then(response => {
             // Check if the response is successful
             if (!response.ok) {
