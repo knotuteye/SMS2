@@ -121,18 +121,45 @@ input[type="button"].success {
 
 .button:hover {
     background-color: #4a90e2;
+    transform: scale(0.99);
+
     /* Lighter background color */
 }
 
 .button:active {
-    transform: scale(0.99);
+    transform: scale(0.95);
     /* Scale down the button slightly */
 }
 
 .button:disabled,
-.button[disabled]{
-  background-color: #cccccc;
+.button[disabled] {
+    background-color: #cccccc;
 }
+
+.statusBox {
+    display: none;
+    justify-items: center;
+}
+
+.statusBox>div {
+    display: flex;
+    justify-content: center;
+}
+
+.statusBox>div>img {
+    width: 100%;
+    object-fit: contain;
+    transform: translateY(-60px);
+}
+
+.statusBox>h3 {
+    margin-top: -6rem;
+}
+
+.statusBox>p {
+    margin-top: -2rem;
+}
+
 
 @media only screen and (min-width: 660px) and (max-width: 1023px) {
 

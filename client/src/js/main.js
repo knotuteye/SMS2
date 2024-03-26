@@ -44,6 +44,9 @@ const phoneNumberInput = document.querySelector('input[name="phoneNumber"]');
 const emailInput = document.querySelector('input[name="email"]');
 const registerButton = document.querySelector('input[type="submit"]');
 
+const successBox = document.getElementById("successBox");
+const errorBox = document.getElementById("errorBox");
+
 // Function to check if all required fields are filled
 function areAllFieldsFilled() {
     return firstNameInput.value.trim() !== '' &&
@@ -132,9 +135,11 @@ function submitForm() {
             // Request was successful
             console.log('Form submitted successfully');
             // You can handle the response from the server here
+            showSuccess();
         } else {
             // Request failed
             console.error('Form submission failed');
+            showError();
         }
     };
 
@@ -146,8 +151,6 @@ function submitForm() {
 
     // Convert JSON data to a string
     const jsonDataString = JSON.stringify(jsonData);
-
-    console.log("jsonData", jsonData);
 
     // Send the request with the form data
     xhr.send(jsonDataString);
@@ -163,19 +166,22 @@ function handleFileUpload(file) {
         method: 'POST',
         body: formData
     })
-    .then(response => {
-        if (response.ok) {
-            console.log('File uploaded successfully');
-            // Handle success
-        } else {
-            console.error('Error uploading file');
+        .then(response => {
+            if (response.ok) {
+                console.log('File uploaded successfully');
+                // Handle success
+                showSuccess();
+            } else {
+                console.error('Error uploading file');
+                // Handle error
+                showError();
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
             // Handle error
-        }
-    })
-    .catch(error => {
-        console.error('Error uploading file:', error);
-        // Handle error
-    });
+            showError();
+        });
 }
 
 // Find the "Upload Bulk" button
@@ -203,3 +209,21 @@ fileInput.addEventListener('change', () => {
         handleFileUpload(file);
     }
 });
+
+function showSuccess() {
+    registrationForm.style.display = "none";
+    successBox.style.display = "grid";
+    setTimeout(() => {
+        registrationForm.style.display = "block";
+        successBox.style.display = "none";
+    }, 3000);
+}
+
+function showError() {
+    registrationForm.style.display = "none";
+    errorBox.style.display = "grid";
+    setTimeout(() => {
+        registrationForm.style.display = "block";
+        errorBox.style.display = "none";
+    }, 3000);
+}
