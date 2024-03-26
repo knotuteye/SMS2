@@ -159,7 +159,7 @@ function handleFileUpload(file) {
     const formData = new FormData();
     formData.append('file', file);
 
-    fetch(API_Endpoint + 'registration/bulk', {
+    fetch(API_Endpoint + 'bulk/registration/', {
         method: 'POST',
         body: formData
     })
