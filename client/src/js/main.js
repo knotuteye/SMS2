@@ -145,6 +145,11 @@ function submitForm() {
         }
     };
 
+    xhr.onerror= function(e) {
+        console.error("Error fetching " + url);
+        showError();
+    };
+
     // Convert formData to JSON
     const jsonData = {};
     formData.forEach((value, key) => {
