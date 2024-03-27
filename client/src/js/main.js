@@ -51,8 +51,7 @@ const errorBox = document.getElementById("errorBox");
 function areAllFieldsFilled() {
     return firstNameInput.value.trim() !== '' &&
         lastNameInput.value.trim() !== '' &&
-        phoneNumberInput.value.trim() !== '' &&
-        emailInput.value.trim() !== '';
+        phoneNumberInput.value.trim() !== '';
 }
 
 // Function to enable or disable the register button based on whether all fields are filled
@@ -160,7 +159,7 @@ function submitForm() {
 // Function to handle file upload
 function handleFileUpload(file) {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file, `${Date.now()}-${file.filename}`);
 
     fetch(API_Endpoint + 'bulk/registration/', {
         method: 'POST',
@@ -213,17 +212,9 @@ fileInput.addEventListener('change', () => {
 function showSuccess() {
     registrationForm.style.display = "none";
     successBox.style.display = "grid";
-    setTimeout(() => {
-        registrationForm.style.display = "block";
-        successBox.style.display = "none";
-    }, 3000);
 }
 
 function showError() {
     registrationForm.style.display = "none";
     errorBox.style.display = "grid";
-    setTimeout(() => {
-        registrationForm.style.display = "block";
-        errorBox.style.display = "none";
-    }, 3000);
 }
