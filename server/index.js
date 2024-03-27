@@ -48,9 +48,9 @@ app.post('/bulk/registration', upload.single('file'), (req, res) => {
 
 // Handle POST request to '/registration'
 app.post('/registration', (req, res) => {
-    const { firstName, lastName, phoneNumber, email, country } = req.body;
-    createRegistration(firstName, lastName, phoneNumber, email, country, (err, newRegistrationId) => {
-        if (err) {
+    const { firstName, lastName, phoneNumber, email, country, title } = req.body;
+    createRegistration(firstName, lastName, phoneNumber, email, country, title, (err, newRegistrationId) => {
+        if(err) {
             res.status(500).json({ error: 'Internal Server Error' });
             return;
         }
@@ -88,8 +88,8 @@ app.get('/registration/:id', (req, res) => {
 // Handle PUT request to '/registration/:id'
 app.put('/registration/:id', (req, res) => {
     const id = req.params.id;
-    const { firstName, lastName, phoneNumber, email, country } = req.body;
-    updateRegistration(id, firstName, lastName, phoneNumber, email, (err, affectedRows) => {
+    const { firstName, lastName, phoneNumber, email, country, title } = req.body;
+    updateRegistration(id, firstName, lastName, phoneNumber, email, country, title, (err, affectedRows) => {
         if (err) {
             res.status(500).json({ error: 'Internal Server Error' });
             return;

@@ -24,3 +24,7 @@ ADD created TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 -- Add a 'created' column to the 'registrations' table
 ALTER TABLE registration
 ADD country VARCHAR(50) NOT NULL;
+
+ALTER TABLE registration MODIFY email VARCHAR(100);
+
+ALTER TABLE registration ADD COLUMN title VARCHAR(50);

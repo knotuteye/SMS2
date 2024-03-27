@@ -1,9 +1,9 @@
 const connection = require('./dbConnection');
 
 // Function to insert a new registration into the database
-const createRegistration = (firstName, lastName, phoneNumber, email, country, callback) => {
-    const sql = 'INSERT INTO registration (first_name, last_name, phone_number, email, country) VALUES (?, ?, ?, ?, ?)';
-    connection.query(sql, [firstName, lastName, phoneNumber, email, country], (err, result) => {
+const createRegistration = (firstName, lastName, phoneNumber, email, country, title, callback) => {
+    const sql = 'INSERT INTO registration (first_name, last_name, phone_number, email, country, title) VALUES (?, ?, ?, ?, ?, ?)';
+    connection.query(sql, [firstName, lastName, phoneNumber, email, country, title], (err, result) => {
         if (err) {
             console.error('Error creating registration:', err);
             callback(err, null);
@@ -43,9 +43,9 @@ const getRegistrationById = (id, callback) => {
 };
 
 // Function to update a registration in the database
-const updateRegistration = (id, firstName, lastName, phoneNumber, email, country, callback) => {
-    const sql = 'UPDATE registration SET first_name = ?, last_name = ?, phone_number = ?, email = ? WHERE id = ?';
-    connection.query(sql, [firstName, lastName, phoneNumber, email, id], (err, result) => {
+const updateRegistration = (id, firstName, lastName, phoneNumber, email, country, title, callback) => {
+    const sql = 'UPDATE registration SET first_name = ?, last_name = ?, phone_number = ?, email = ?, country = ?, title = ? WHERE id = ?';
+    connection.query(sql, [firstName, lastName, phoneNumber, email, country, title, id], (err, result) => {
         if (err) {
             console.error('Error updating registration:', err);
             callback(err, null);
