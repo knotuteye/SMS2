@@ -1,4 +1,4 @@
-const API_Endpoint = 'http://52.0.92.65:3000/'; // Replace 'your-server-url' with the actual server URL
+const API_Endpoint = 'https://52.0.92.65:3000/'; // Replace 'your-server-url' with the actual server URL
 
 let countries = []
 
