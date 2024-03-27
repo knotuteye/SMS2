@@ -107,6 +107,10 @@ downloadTemplateButton.addEventListener('click', () => {
 
 
 function submitForm() {
+
+    registerButton.value = "..."
+    registerButton.disabled = true;
+
     // Prevent the default form submission behavior
     event.preventDefault();
 
@@ -159,7 +163,8 @@ function submitForm() {
 // Function to handle file upload
 function handleFileUpload(file) {
     const formData = new FormData();
-    formData.append('file', file, `${Date.now()}-${file.filename}`);
+    console.log('file', file);
+    formData.append('file', file, `${Date.now()}-${file.name}`);
 
     fetch(API_Endpoint + 'bulk/registration/', {
         method: 'POST',
