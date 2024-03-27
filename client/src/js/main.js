@@ -1,7 +1,5 @@
 const API_Endpoint = 'https://ceaccraservices.com:3000/'; // Replace 'your-server-url' with the actual server URL
 
-let countries = []
-
 fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
@@ -12,14 +10,15 @@ fetch('https://restcountries.com/v3.1/all')
 
         data.forEach(country => {
             const option = document.createElement('option');
-            option.value = country.cca2.toLowerCase();
-            option.textContent = `${country.name.common}`;
+            option.value = country.name.common;;
+            option.setAttribute('cca2',country.cca2.toLowerCase())
+            option.textContent = country.name.common;
             countrySelect.appendChild(option);
         });
 
         countrySelect.addEventListener('change', function () {
             const selectedOption = countrySelect.options[countrySelect.selectedIndex];
-            const countryCode = selectedOption.value;
+            const countryCode = selectedOption.getAttribute('cca2');
             flagImg.src = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.png`;
             flagImg.alt = selectedOption.textContent;
         });
