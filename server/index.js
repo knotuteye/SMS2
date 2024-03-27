@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const { createRegistration, getAllRegistration, getRegistrationById, updateRegistration, deleteRegistration } = require('./db/registration');
 const { downloadFileFromS3, uploadFileToS3 } = require('./aws/s3Utils');
+const fs = require('fs');
+const https = require('https');
 
 const app = express();
 
@@ -140,8 +142,18 @@ app.get('/bulk/registration', (req, res) => {
     });
 });
 
+// SSL
+const options = {
+    key: fs.readFileSync(process.env.SSL_PRIVATE_KEY_PATH),                  //Change Private Key Path here
+    cert: fs.readFileSync(process.env.SSL_CERT_PATH),            //Change Main Certificate Path here
+}
+
 // Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+
+https.createServer(options, app).listen(port);
