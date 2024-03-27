@@ -16,13 +16,26 @@
     <main>
         <img class="logo" src="../img/SMS2024.jpg" alt="">
         <article>
-            <div>
-                <h2>Registration</h2>
-            </div>
             <section>
                 <form id="registrationForm" action="#" method="post" onsubmit="submitForm()" autocomplete="off">
                     <div>
-                        <input type="text" placeholder="First Name" name="firstName" autofocus required>
+                        <h2>Kindly register with the details below</h2>
+                    </div>
+                    <div>
+                        <!-- <input type="text" placeholder="Title (e.g. Dr, Pastor)" name="title" autofocus > -->
+                        <select name="title" id="">
+                            <option value="" disabled selected>Title</option>
+                            <option value="PASTOR">Pastor</option>
+                            <option value="DEACON">Deacon</option>
+                            <option value="DEACONESS">Deaconess</option>
+                            <option value="MR">Mr</option>
+                            <option value="MRS">Mrs</option>
+                            <option value="MISS">Miss</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="First Name" name="firstName" required>
                     </div>
                     <div>
                         <input type="text" placeholder="Last Name" name="lastName" required>
@@ -33,12 +46,12 @@
                             <option value="gh">Ghana</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <input type="tel" placeholder="Phone Number" name="phoneNumber" required>
                     </div>
                     <div>
-                        <input type="email" placeholder="Email" name="email" required>
+                        <input type="email" placeholder="Email" name="email">
                     </div>
                     <div>
                         <input type="submit" class="button" value="Register">
